@@ -23,13 +23,13 @@
         pointer-events: none;
         background: radial-gradient(ellipse at 70% 45%, #a8ffe009, transparent 55%);
       }
-      .page { position: relative; min-height: 100svh; height: 100svh; display: flex; flex-direction: column; padding: 0 7vw; }
+      .page { position: relative; min-height: 100svh; display: flex; flex-direction: column; padding: 0 7vw; }
       header, footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
       header { min-height: clamp(56px, 10svh, 100px); flex-shrink: 0; border-bottom: 1px solid #ffffff14; }
       .brand { font-size: 12px; font-weight: 700; letter-spacing: .2em; }
       .status { display: flex; align-items: center; gap: 9px; font-size: 10px; letter-spacing: .16em; color: #a6b4ae; }
       .status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px #a8ffe080; }
-      main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: clamp(16px, 3svh, 40px) 0; }
+      main { flex: 1; display: flex; flex-direction: column; padding: 64px 0; }
       .eyebrow { margin: 0 0 clamp(12px, 3svh, 30px); color: var(--accent); font-size: 11px; letter-spacing: .28em; }
       h1 { margin: 0; font-size: clamp(54px, min(10.5vw, 18svh), 160px); font-weight: 500; line-height: .95; letter-spacing: -.065em; }
       h1 span { display: block; color: #87958f; }
@@ -67,16 +67,32 @@
         .status { font-size: 8px; letter-spacing: .08em; }
         footer { font-size: 8px; letter-spacing: .05em; }
       }
-      @media (max-height: 500px) {
-        header { min-height: 40px; }
-        main { padding: 4px 0; }
-        .eyebrow { margin-bottom: 4px; }
-        h1 { font-size: clamp(36px, min(10.5vw, 12svh), 60px); }
-        .description { margin-top: 4px; }
-        .line { margin-top: 4px; }
-        .menu { gap: 8px; padding-bottom: 12px; }
-        .menu a { min-height: 44px; padding: 8px 12px; }
-        footer { min-height: 28px; }
+      .collection { margin-top: 64px; }
+      .categories { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 56px; }
+      .categories a { padding: 12px 18px; border: 1px solid #a8ffe026; border-radius: 2px; color: #c2d5cc; text-decoration: none; font-size: 12px; line-height: 1.6; letter-spacing: .06em; }
+      a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+      .categories a:hover, .menu a:hover { border-color: #a8ffe080; background: #a8ffe009; }
+      .category { margin-top: 48px; scroll-margin-top: 24px; }
+      .category-heading { display: flex; align-items: baseline; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid #ffffff14; margin-bottom: 24px; }
+      .category-heading span { font-size: 10px; color: var(--accent); letter-spacing: .16em; }
+      h2 { margin: 0; font-size: 18px; font-weight: 400; letter-spacing: .1em; }
+      .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 20px; }
+      .card { min-width: 0; overflow: hidden; border: 1px solid #a8ffe026; border-radius: 2px; background: #a8ffe004; }
+      .card-visual { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #ffffff14; background: linear-gradient(135deg, #a8ffe006, transparent); }
+      .card-visual span { color: #a8ffe050; font-size: 32px; font-weight: 300; }
+      .card-visual img { width: 100%; height: 100%; object-fit: contain; }
+      .card-body { padding: 24px; }
+      .card-label { margin: 0 0 12px; color: var(--accent); font-size: 9px; letter-spacing: .2em; }
+      h3 { margin: 0; font-size: 16px; font-weight: 400; letter-spacing: .06em; overflow-wrap: anywhere; }
+      .card-description { margin: 12px 0 0; font-size: 12px; line-height: 1.8; color: #a6b4ae; overflow-wrap: anywhere; }
+      .card-link { display: inline-block; margin-top: 20px; color: var(--accent); font-size: 12px; text-underline-offset: 4px; }
+      @media (max-width: 700px) {
+        main { padding: 40px 0; }
+        .collection { margin-top: 40px; }
+        .categories { margin-bottom: 36px; }
+        .categories a { padding: 12px; }
+        .category { margin-top: 36px; }
+        .cards { gap: 16px; }
       }
     </style>
   </head>
@@ -89,8 +105,102 @@
       <main>
         <p class="eyebrow">CREATE THE NEXT.</p>
         <h1>LINE <span>STAMPS</span></h1>
-        <p class="description">LINEスタンプのページです。コンテンツは準備中です。</p>
+        <p class="description">日常に、小さな表情を。<br>JARVIS STUDIOのLINEスタンプコレクション。</p>
         <div class="line" aria-hidden="true"></div>
+        <div class="collection">
+          <nav class="categories" aria-label="作品カテゴリー">
+            <a href="#female-characters">女性キャラクター</a>
+            <a href="#mocha">モカ</a>
+            <a href="#bikes">バイク</a>
+            <a href="#international">海外版</a>
+            <a href="#seasonal">季節限定</a>
+          </nav>
+          <section class="category" id="female-characters" aria-labelledby="female-characters-title">
+            <div class="category-heading"><span>01</span><h2 id="female-characters-title">女性キャラクター</h2></div>
+            <div class="cards">
+              <!-- 作品追加時はこのarticleを複製し、見出し・説明を編集してください。
+                   .card-visual内を<img src="画像の相対パス" alt="作品の説明" loading="lazy">に置き換え、
+                   .card-bodyの末尾に<a class="card-link" href="販売URL">LINE STOREで見る</a>を追加できます。
+                   公開時はこの準備中カードを置き換えるか削除してください。 -->
+              <article class="card">
+                <div class="card-visual" aria-hidden="true"><span>+</span></div>
+                <div class="card-body">
+                  <p class="card-label">COMING SOON</p>
+                  <h3>作品を準備中</h3>
+                  <p class="card-description">新しいスタンプを、ここからお届けします。</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="category" id="mocha" aria-labelledby="mocha-title">
+            <div class="category-heading"><span>02</span><h2 id="mocha-title">モカ</h2></div>
+            <div class="cards">
+              <!-- 作品追加時はこのarticleを複製し、見出し・説明を編集してください。
+                   .card-visual内を<img src="画像の相対パス" alt="作品の説明" loading="lazy">に置き換え、
+                   .card-bodyの末尾に<a class="card-link" href="販売URL">LINE STOREで見る</a>を追加できます。
+                   公開時はこの準備中カードを置き換えるか削除してください。 -->
+              <article class="card">
+                <div class="card-visual" aria-hidden="true"><span>+</span></div>
+                <div class="card-body">
+                  <p class="card-label">COMING SOON</p>
+                  <h3>作品を準備中</h3>
+                  <p class="card-description">新しいスタンプを、ここからお届けします。</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="category" id="bikes" aria-labelledby="bikes-title">
+            <div class="category-heading"><span>03</span><h2 id="bikes-title">バイク</h2></div>
+            <div class="cards">
+              <!-- 作品追加時はこのarticleを複製し、見出し・説明を編集してください。
+                   .card-visual内を<img src="画像の相対パス" alt="作品の説明" loading="lazy">に置き換え、
+                   .card-bodyの末尾に<a class="card-link" href="販売URL">LINE STOREで見る</a>を追加できます。
+                   公開時はこの準備中カードを置き換えるか削除してください。 -->
+              <article class="card">
+                <div class="card-visual" aria-hidden="true"><span>+</span></div>
+                <div class="card-body">
+                  <p class="card-label">COMING SOON</p>
+                  <h3>作品を準備中</h3>
+                  <p class="card-description">新しいスタンプを、ここからお届けします。</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="category" id="international" aria-labelledby="international-title">
+            <div class="category-heading"><span>04</span><h2 id="international-title">海外版</h2></div>
+            <div class="cards">
+              <!-- 作品追加時はこのarticleを複製し、見出し・説明を編集してください。
+                   .card-visual内を<img src="画像の相対パス" alt="作品の説明" loading="lazy">に置き換え、
+                   .card-bodyの末尾に<a class="card-link" href="販売URL">LINE STOREで見る</a>を追加できます。
+                   公開時はこの準備中カードを置き換えるか削除してください。 -->
+              <article class="card">
+                <div class="card-visual" aria-hidden="true"><span>+</span></div>
+                <div class="card-body">
+                  <p class="card-label">COMING SOON</p>
+                  <h3>作品を準備中</h3>
+                  <p class="card-description">新しいスタンプを、ここからお届けします。</p>
+                </div>
+              </article>
+            </div>
+          </section>
+          <section class="category" id="seasonal" aria-labelledby="seasonal-title">
+            <div class="category-heading"><span>05</span><h2 id="seasonal-title">季節限定</h2></div>
+            <div class="cards">
+              <!-- 作品追加時はこのarticleを複製し、見出し・説明を編集してください。
+                   .card-visual内を<img src="画像の相対パス" alt="作品の説明" loading="lazy">に置き換え、
+                   .card-bodyの末尾に<a class="card-link" href="販売URL">LINE STOREで見る</a>を追加できます。
+                   公開時はこの準備中カードを置き換えるか削除してください。 -->
+              <article class="card">
+                <div class="card-visual" aria-hidden="true"><span>+</span></div>
+                <div class="card-body">
+                  <p class="card-label">COMING SOON</p>
+                  <h3>作品を準備中</h3>
+                  <p class="card-description">新しいスタンプを、ここからお届けします。</p>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
       </main>
       <nav class="menu" aria-label="メインメニュー">
         <a href="index.html">HOME</a>
