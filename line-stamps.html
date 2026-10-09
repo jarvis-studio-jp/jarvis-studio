@@ -86,6 +86,9 @@
       h3 { margin: 0; font-size: 16px; font-weight: 400; letter-spacing: .06em; overflow-wrap: anywhere; }
       .card-description { margin: 12px 0 0; font-size: 12px; line-height: 1.8; color: #a6b4ae; overflow-wrap: anywhere; }
       .card-link { display: inline-block; margin-top: 20px; color: var(--accent); font-size: 12px; text-underline-offset: 4px; }
+      .sale-button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; margin-top: 20px; padding: 12px; border: 1px solid #a8ffe040; border-radius: 2px; background: #a8ffe009; color: var(--accent); font: inherit; font-size: 12px; line-height: 1.6; letter-spacing: .06em; text-align: center; text-decoration: none; }
+      .sale-button:disabled { opacity: 1; -webkit-text-fill-color: var(--accent); cursor: default; }
+      .sale-status { margin: 10px 0 0; color: #a6b4ae; font-size: 11px; line-height: 1.8; }
       @media (max-width: 700px) {
         main { padding: 40px 0; }
         .collection { margin-top: 40px; }
@@ -109,31 +112,33 @@
         <div class="line" aria-hidden="true"></div>
         <div class="collection">
           <nav class="categories" aria-label="作品カテゴリー">
-            <a href="#female-characters">女性キャラクター</a>
             <a href="#mocha">モカ</a>
+            <a href="#female-characters">女性キャラクター</a>
             <a href="#bikes">バイク</a>
             <a href="#international">海外版</a>
             <a href="#seasonal">季節限定</a>
           </nav>
-          <section class="category" id="female-characters" aria-labelledby="female-characters-title">
-            <div class="category-heading"><span>01</span><h2 id="female-characters-title">女性キャラクター</h2></div>
+          <section class="category" id="mocha" aria-labelledby="mocha-title">
+            <div class="category-heading"><span>01</span><h2 id="mocha-title">モカ</h2></div>
             <div class="cards">
               <!-- 作品追加時はこのarticleを複製し、見出し・説明を編集してください。
                    .card-visual内を<img src="画像の相対パス" alt="作品の説明" loading="lazy">に置き換え、
                    .card-bodyの末尾に<a class="card-link" href="販売URL">LINE STOREで見る</a>を追加できます。
-                   公開時はこの準備中カードを置き換えるか削除してください。 -->
+                   販売リンク追加時はbuttonを<a class="sale-button" href="販売URL">販売ページを見る</a>に置き換え、販売リンク準備中の案内を削除してください。 -->
               <article class="card">
                 <div class="card-visual" aria-hidden="true"><span>+</span></div>
                 <div class="card-body">
                   <p class="card-label">COMING SOON</p>
-                  <h3>作品を準備中</h3>
-                  <p class="card-description">新しいスタンプを、ここからお届けします。</p>
+                  <h3>モカのLINEスタンプ</h3>
+                  <p class="card-description">モカと一緒に、日々の会話にひとことを。毎日のやりとりに使えるLINEスタンプです。</p>
+                  <button class="sale-button" type="button" disabled aria-describedby="mocha-sale-status">販売ページを見る</button>
+                  <p class="sale-status" id="mocha-sale-status">販売リンク準備中</p>
                 </div>
               </article>
             </div>
           </section>
-          <section class="category" id="mocha" aria-labelledby="mocha-title">
-            <div class="category-heading"><span>02</span><h2 id="mocha-title">モカ</h2></div>
+          <section class="category" id="female-characters" aria-labelledby="female-characters-title">
+            <div class="category-heading"><span>02</span><h2 id="female-characters-title">女性キャラクター</h2></div>
             <div class="cards">
               <!-- 作品追加時はこのarticleを複製し、見出し・説明を編集してください。
                    .card-visual内を<img src="画像の相対パス" alt="作品の説明" loading="lazy">に置き換え、
